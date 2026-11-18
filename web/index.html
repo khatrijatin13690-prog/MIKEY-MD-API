@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090914">
+  <meta name="description" content="MIKEY MD API - WhatsApp Business API service and developer documentation.">
+  <title>MIKEY MD API</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <header class="nav wrap">
+    <a class="brand" href="#"><span class="brand-mark">M</span><span>MIKEY <b>MD API</b></span></a>
+    <nav><a href="#features">Features</a><a href="#endpoints">Endpoints</a><a href="#setup">Setup</a></nav>
+    <a class="nav-cta" href="#endpoints">Documentation <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="eyebrow"><span class="pulse"></span> WHATSAPP BUSINESS CLOUD API</div>
+      <h1>Your messaging.<br><span>Connected.</span></h1>
+      <p class="hero-copy">A clean, developer-friendly API layer for your WhatsApp Business integration. Send messages, receive webhooks and monitor your service from one place.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#endpoints">Explore API <span>→</span></a>
+        <a class="button secondary" href="#setup">Deployment guide</a>
+      </div>
+      <div class="status-card">
+        <div><span class="status-dot"></span><b>API status</b><small id="statusText">Checking service…</small></div>
+        <div class="status-right"><strong id="statusValue">Checking</strong><small id="statusUrl">Configure your Railway URL in app.js</small></div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="features">
+      <div class="section-heading"><div class="eyebrow">BUILT FOR DEVELOPERS</div><h2>Everything in one API.</h2><p>Start with the essentials and extend your integration as your project grows.</p></div>
+      <div class="feature-grid">
+        <article class="feature"><div class="feature-icon">⌁</div><h3>Simple endpoints</h3><p>Clear REST endpoints for health checks, statistics and sending text messages.</p></article>
+        <article class="feature"><div class="feature-icon">↔</div><h3>Webhook events</h3><p>Receive incoming WhatsApp messages through Meta's webhook verification flow.</p></article>
+        <article class="feature"><div class="feature-icon">⌑</div><h3>API key security</h3><p>Protect outgoing-message endpoints with a private server-side API key.</p></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="endpoints">
+      <div class="section-heading"><div class="eyebrow">API REFERENCE</div><h2>Available endpoints.</h2><p>Base URL is your Railway public domain.</p></div>
+      <div class="endpoint-list">
+        <div class="endpoint"><span class="method get">GET</span><code>/api/health</code><span>Service and database status</span></div>
+        <div class="endpoint"><span class="method get">GET</span><code>/api/stats</code><span>Aggregate usage statistics</span></div>
+        <div class="endpoint"><span class="method post">POST</span><code>/api/messages/text</code><span>Send a WhatsApp text message · API key required</span></div>
+        <div class="endpoint"><span class="method get">GET</span><code>/webhook</code><span>Meta webhook verification</span></div>
+        <div class="endpoint"><span class="method post">POST</span><code>/webhook</code><span>Receive WhatsApp events</span></div>
+        <div class="endpoint"><span class="method get">GET</span><code>/api/docs</code><span>Machine-readable API documentation</span></div>
+      </div>
+      <div class="code-card">
+        <div class="code-top"><span>Send a text message</span><button id="copyExample">Copy example</button></div>
+        <pre><code>curl -X POST "https://YOUR-RAILWAY-DOMAIN/api/messages/text" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: YOUR_PRIVATE_API_KEY" \
+  -d '{
+    "to": "919876543210",
+    "text": "Hello from MIKEY MD API"
+  }'</code></pre>
+      </div>
+    </section>
+
+    <section class="section wrap" id="setup">
+      <div class="section-heading"><div class="eyebrow">GETTING STARTED</div><h2>Deploy in three steps.</h2></div>
+      <div class="steps">
+        <div><b>01</b><h3>Deploy the backend</h3><p>Push the <code>api</code> folder to GitHub and deploy it on Railway. Add a PostgreSQL service.</p></div>
+        <div><b>02</b><h3>Connect Meta</h3><p>Configure your WhatsApp Business phone number, access token, app secret and webhook URL.</p></div>
+        <div><b>03</b><h3>Publish this website</h3><p>Deploy the <code>web</code> folder on Vercel and set the Railway API URL in <code>app.js</code>.</p></div>
+      </div>
+      <p class="notice">This project uses the official WhatsApp Business Cloud API. It does not provide WhatsApp Web QR pairing. Follow WhatsApp's messaging policies and consent requirements.</p>
+    </section>
+  </main>
+
+  <footer class="wrap footer"><a class="brand" href="#"><span class="brand-mark">M</span><span>MIKEY <b>MD API</b></span></a><span>Independent developer project · v1.0.0</span></footer>
+  <script src="/app.js"></script>
+</body>
+</html>
